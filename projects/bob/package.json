@@ -1,0 +1,14 @@
+{
+  "name": "ngx-bob",
+  "version": "0.0.7",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "ngx-webstorage-service": "^5.0.0",
+    "marked": "^16.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

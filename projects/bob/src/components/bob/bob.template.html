@@ -1,0 +1,11 @@
+@if (available()) {
+  <ngx-bob-ui
+      [userAvatarSrc]="userAvatar()"
+      [bobAvatarSrc]="bobAvatar()"
+      [sendIconSrc]="sendIcon()"
+      [newMessagePlaceholder]="newMessagePlaceholder()" />
+
+  <ngx-bob-orb
+      [bobAvatar]="bobAvatar()"
+      (click)="onBobClicked()" />
+}

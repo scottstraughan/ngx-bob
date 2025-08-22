@@ -1,0 +1,53 @@
+<div class="container"
+     *ngIf="containerVisible()">
+
+  <div class="panel"
+       *ngIf="panelVisible()"
+       [@openClose]
+       (@openClose.start)="onPanelOpened()"
+       (@openClose.done)="onPanelClosed()">
+
+    <ol #messagesList class="messages">
+      @for (message of messages(); track $index) {
+        <li [class]="message.sent ? 'sent' : 'received'">
+          <div class="body" [innerHTML]=" message.body"></div>
+
+          <div class="sender">
+            @if (message.loading) {
+              <ngx-bob-loading />
+            } @else {
+              @if (message.sent) {
+                <img class="avatar you" [src]="userAvatarSrc()" alt="That's You!" />
+              } @else {
+                <img class="avatar bob" [src]="bobAvatarSrc()" alt="Bob the Bot" />
+              }
+            }
+          </div>
+        </li>
+      }
+    </ol>
+
+    <div class="prompt">
+      <div class="input">
+        <textarea
+            #newMessageTextarea
+            rows="1"
+            [disabled]="isSending()"
+            [placeholder]="newMessagePlaceholder()"
+            [(ngModel)]="newMessage"
+            (keydown.enter)="onSendMessage($event)"></textarea>
+      </div>
+
+      <div class="send">
+        @if (isSending()) {
+          <ngx-bob-loading />
+        } @else {
+          <img class="send-icon"
+               [src]="sendIconSrc()"
+               (click)="onSendMessage($event)"
+               alt="Send Message" />
+        }
+      </div>
+    </div>
+  </div>
+</div>

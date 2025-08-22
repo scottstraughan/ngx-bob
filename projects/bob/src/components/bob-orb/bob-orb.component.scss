@@ -1,0 +1,44 @@
+.container {
+  display: flex;
+  border-radius: 100%;
+  position: fixed;
+  transition: .4s all;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-shadow: 4px 5px 8px 0 rgba(0, 0, 0, .2);
+
+  width: var(--ngx-bob-orb-size);
+  height: var(--ngx-bob-orb-size);
+  top: var(--ngx-bob-orb-top);
+  right: var(--ngx-bob-orb-right);
+  bottom: var(--ngx-bob-orb-bottom);
+  left: var(--ngx-bob-orb-left);
+  background-color: var(--ngx-bob-orb-bg-color);
+  z-index: var(--ngx-bob-orb-z-index);
+
+  &:hover {
+    transform: scale(1.1);
+    box-shadow: 4px 5px 8px 0 rgba(0, 0, 0, .3);
+  }
+
+  img {
+    width: 60%;
+    height: auto;
+    animation: float-up ease-out .4s;
+    animation-delay: .2s;
+    animation-fill-mode: forwards;
+    margin-top: 200%;
+
+    @keyframes float-up {
+      0% {
+        margin-top: 200%;
+        opacity: 0;
+      }
+      100% {
+        margin-top: 0;
+      }
+    }
+  }
+}

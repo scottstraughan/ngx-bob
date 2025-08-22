@@ -1,0 +1,5 @@
+@if (!(bobService.observeVisible() | async)) {
+  <div class="container" [@openClose]>
+    <img [src]="bobAvatar()" alt="Bob" title="Talk to Bob" />
+  </div>
+}

@@ -1,0 +1,26 @@
+:host {
+  // For the Bob orb
+  --ngx-bob-orb-bg-color: #060649;
+  --ngx-bob-orb-size: 80px;
+  --ngx-bob-orb-top: inherit;
+  --ngx-bob-orb-right: 3rem;
+  --ngx-bob-orb-bottom: 3rem;
+  --ngx-bob-orb-left: inherit;
+  --ngx-bob-orb-z-index: 99999;
+
+  // For the Bob UI
+  --ngx-bob-ui-offset-bottom: 10px;
+  --ngx-bob-ui-offset-top: 10px;
+  --ngx-bob-ui-height: calc(100vh - var(--ngx-bob-ui-offset-top) - var(--ngx-bob-ui-offset-bottom));
+  --ngx-bob-ui-width: 400px;
+  --ngx-bob-ui-color: #efefef;
+  --ngx-bob-ui-container-color: rgba(0, 0, 0, .2);
+  --ngx-bob-ui-z-index: 99999;
+  --ngx-bob-ui-message-received-bg-color: #707070;
+  --ngx-bob-ui-message-received-text-color: #efefef;
+  --ngx-bob-ui-message-sent-bg-color: #154adc;
+  --ngx-bob-ui-message-sent-text-color: #efefef;
+  --ngx-bob-ui-border-radius: 6px;
+  --ngx-bob-ui-border-color: rgba(0, 0, 0, .2);
+  --ngx-bob-ui-prompt-bg-color: rgba(0, 0, 0, .1);
+}
