@@ -1,5 +1,5 @@
 import { Inject, Injectable } from '@angular/core';
-import { BehaviorSubject, catchError, map, Observable, of, switchMap, take, tap, timeout } from 'rxjs';
+import { BehaviorSubject, catchError, map, Observable, of, take, tap, timeout } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { LOCAL_STORAGE, StorageService } from 'ngx-webstorage-service';
 import { BOB_CONFIG, BobConfig } from './bob.config';
@@ -99,35 +99,45 @@ export class BobService {
   send(
     body: string
   ): Observable<any> {
+    if (body == 'clear') {
+      this.clearHistory();
+      return of();
+    }
+
     const message: Message = {
-      body: body,
+      body: marked.parse(body).toString(),
       sent: true,
       date: new Date(),
-      loading: true
+      loading: true,
+      isError: false
     }
 
     this.messages.push(message);
     this.notify();
 
-    this.sending$.next(true)
+    this.sending$.next(true);
 
     return this.httpClient.post<Response>(`${this.bobConfig.endpointUrl}/speak`, {
       body: message.body,
       history: this.messages
     })
       .pipe(
-        map(result =>
-          marked.parse(result.message).toString()),
+        map(responseMessage =>
+          marked.parse(responseMessage.message.toString()).toString()),
         tap(html =>
           this.messages.push({
             body: html,
             date: new Date(),
             sent: false,
-            loading: false
+            loading: false,
+            isError: false
           })
         ),
         catchError(error => {
-          alert(error);
+          console.error(error);
+          message.isError = true;
+
+          this.notify();
           return error;
         }),
         tap(() => message.loading = false),
@@ -142,7 +152,9 @@ export class BobService {
    */
   clearHistory() {
     this.storageService.remove(this.bobConfig.bobStorageKey);
-    this.messages = []
+    this.messages = [];
+    this.loadMessagesFromStorage();
+
     this.notify();
   }
 
@@ -191,12 +203,15 @@ export class BobService {
       this.messages.map(message => message.loading = false);
     }
 
+    const welcomeMessage = marked.parse(this.bobConfig.welcomeMessage).toString();
+
     if (this.messages.length == 0) {
       this.messages.push({
-        body: this.bobConfig.welcomeMessage,
+        body: welcomeMessage,
         sent: false,
         date: new Date(),
         loading: false,
+        isError: false
       })
     }
 
@@ -212,6 +227,7 @@ export type Message = {
   sent?: boolean
   date: Date
   loading: boolean
+  isError: boolean
 }
 
 /**

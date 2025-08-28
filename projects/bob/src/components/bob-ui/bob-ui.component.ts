@@ -169,6 +169,10 @@ export class BobUiComponent implements OnDestroy {
   ) {
     event.preventDefault();
 
+    if (this.newMessage.length == 0) {
+      return ;
+    }
+
     this.scrollToBottom();
 
     this.bobService.send(this.newMessage)
@@ -201,6 +205,24 @@ export class BobUiComponent implements OnDestroy {
     }
 
     this.containerVisible.set(false);
+  }
+
+  getTitle(
+    message: Message
+  ) {
+    if (message.loading) {
+      return "Message is sending";
+    } else if (message.isError) {
+      return "There was an error sending this message.";
+    } else if (message.sent) {
+      return "The message was sent successfully.";
+    }
+
+    return "The message was received successfully.";
+  }
+
+  isReadyToSend(): boolean {
+    return this.newMessage.length > 0;
   }
 
   /**

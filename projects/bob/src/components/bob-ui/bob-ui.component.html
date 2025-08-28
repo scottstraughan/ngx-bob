@@ -7,9 +7,19 @@
        (@openClose.start)="onPanelOpened()"
        (@openClose.done)="onPanelClosed()">
 
+    <div class="header">
+      <div>
+        <img class="avatar" [src]="bobAvatarSrc()" alt="Bob the Bot" />
+      </div>
+      <div>Bob</div>
+    </div>
+
     <ol #messagesList class="messages">
       @for (message of messages(); track $index) {
-        <li [class]="message.sent ? 'sent' : 'received'">
+        <li
+            [class]="message.sent ? 'sent' : 'received'"
+            [class.error]="message.isError"
+            [title]="getTitle(message)">
           <div class="body" [innerHTML]=" message.body"></div>
 
           <div class="sender">
@@ -38,7 +48,7 @@
             (keydown.enter)="onSendMessage($event)"></textarea>
       </div>
 
-      <div class="send">
+      <div class="send" [class.disabled]="!isReadyToSend()">
         @if (isSending()) {
           <ngx-bob-loading />
         } @else {

@@ -6,7 +6,7 @@
   --ngx-bob-orb-right: 3rem;
   --ngx-bob-orb-bottom: 3rem;
   --ngx-bob-orb-left: inherit;
-  --ngx-bob-orb-z-index: 99999;
+  --ngx-bob-orb-z-index: 999999999;
 
   // For the Bob UI
   --ngx-bob-ui-offset-bottom: 10px;
@@ -15,7 +15,7 @@
   --ngx-bob-ui-width: 400px;
   --ngx-bob-ui-color: #efefef;
   --ngx-bob-ui-container-color: rgba(0, 0, 0, .2);
-  --ngx-bob-ui-z-index: 99999;
+  --ngx-bob-ui-z-index: 9999999999;
   --ngx-bob-ui-message-received-bg-color: #707070;
   --ngx-bob-ui-message-received-text-color: #efefef;
   --ngx-bob-ui-message-sent-bg-color: #154adc;
@@ -23,4 +23,6 @@
   --ngx-bob-ui-border-radius: 6px;
   --ngx-bob-ui-border-color: rgba(0, 0, 0, .2);
   --ngx-bob-ui-prompt-bg-color: rgba(0, 0, 0, .1);
+  --ngx-bob-ui-header-bg-color: rgba(142, 142, 142, 0.86);
+  --ngx-bob-ui-header-text-color: var(--ngx-bob-ui-color);
 }
