@@ -4,7 +4,7 @@
 
 Bob is a tool that is composed of three core components:
 
-1. [ngx-box](https://github.com/scottstraughan/ngx-bob/tree/main/projects/bob)
+1. [ngx-bob](https://github.com/scottstraughan/ngx-bob/tree/main/projects/bob)
 2. [bob-brain](https://github.com/scottstraughan/bob-brain)
 3. [embedding-layer](https://github.com/scottstraughan/saorsail-popular-db/blob/main/src/embeddings/__init__.py)
 
