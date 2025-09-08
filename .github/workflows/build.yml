@@ -21,7 +21,7 @@ jobs:
       - name: Setup Node.js 22
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8
         with:
-          node-version: 22.1.2
+          node-version: 22
           cache: 'npm'
 
       - name: Install Angular CLI
