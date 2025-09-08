@@ -6,13 +6,14 @@ import { routes } from './app/app.routes';
 import { provideBob } from '../../bob/src/lib/bob.provider';
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { environment } from './environments/environment';
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideBob({
-      endpointUrl: 'http://localhost:3001',
+      endpointUrl: environment.endpoint,
       bobStorageKey: 'bob',
       welcomeMessage: '👋 Hi! I\'m Bob, an AI assistant. I can find you apps, install apps to devices or even download them.'
     }),
