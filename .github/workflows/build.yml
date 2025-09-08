@@ -24,6 +24,9 @@ jobs:
           node-version: 22.4.1
           cache: 'npm'
 
+      - name: Install Angular CLI
+        run: npm install -g @angular/cli
+
       - name: Install Dependencies
         run: npm ci
 
