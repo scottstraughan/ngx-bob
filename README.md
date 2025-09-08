@@ -21,6 +21,17 @@ It features these core things:
 - Some special commands
 - Ability to search saorsail.com
 
+## Usage
+
+You can install it from [npmjs.com](https://www.npmjs.com/package/ngx-bob) using the following command:
+
+```shell
+npm i ngx-bob
+```
+
+You will also need to create your own "bob-brain" for Bob to connect to. You can do this for free using render.com. 
+Please [visit here to setup bob-brain](https://github.com/scottstraughan/bob-brain).
+
 ## Development
 
 Feel free to create to PRs with changes.
