@@ -10,6 +10,9 @@ permissions:
   pages: write
   id-token: write
 
+env:
+  BASE_URL: '/ngx-bob/'
+
 jobs:
   # Build the Angular site
   build:
@@ -31,7 +34,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: ng build bob-test
+        run: ng build bob-test --base-href $BASE_URL --deploy-url $BASE_URL
 
       - name: Copy index.html to 404.html
         run: cp ./dist/bob-test/browser/index.html ./dist/bob-test/browser/404.html
